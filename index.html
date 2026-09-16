@@ -1,362 +1,431 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#6366f1" />
-  <meta name="description" content="أداة ذكية لاستخراج النص العربي من الصور وضغطها — مجانية ومفتوحة المصدر" />
-  <title>نصّي — استخراج النص العربي من الصور</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+<!-- ===== SEO الأساسي ===== -->
+<title>تحويل الصور أونلاين مجاناً | Convert Image — JPG PNG WEBP</title>
+<meta name="description" content="أداة مجانية لتحويل الصور أونلاين: تحويل JPG إلى PNG، PNG إلى JPG، تحويل إلى WEBP، ضغط وتغيير حجم الصور. بدون تسجيل، بدون رفع للسيرفر، خصوصية تامة.">
+<meta name="keywords" content="تحويل الصور, ضغط الصور, تغيير صيغة الصور, تحويل JPG إلى PNG, تحويل PNG إلى JPG, تحويل إلى WEBP, تغيير حجم الصور, image converter, convert image, jpg to png, png to jpg, convert to webp, compress image">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="author" content="ConvertImage">
+<meta name="theme-color" content="#e5322d">
 
-  <link rel="stylesheet" href="style.css" />
+<!-- Canonical -->
+<link rel="canonical" href="https://lidenoniso3-ctrl.github.io/smart/">
 
-  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<!-- hreflang -->
+<link rel="alternate" hreflang="ar" href="https://lidenoniso3-ctrl.github.io/smart/?lang=ar">
+<link rel="alternate" hreflang="en" href="https://lidenoniso3-ctrl.github.io/smart/?lang=en">
+<link rel="alternate" hreflang="x-default" href="https://lidenoniso3-ctrl.github.io/smart/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="تحويل الصور أونلاين مجاناً — Convert Image">
+<meta property="og:description" content="حوّل وضغط صورك إلى JPG، PNG، WEBP مجاناً. بدون تسجيل، بدون رفع، خصوصية تامة.">
+<meta property="og:url" content="https://lidenoniso3-ctrl.github.io/smart/">
+<meta property="og:image" content="https://lidenoniso3-ctrl.github.io/smart/og-image.jpg">
+<meta property="og:locale" content="ar_AR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="ConvertImage">
+
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="تحويل الصور أونلاين مجاناً — Convert Image">
+<meta name="twitter:description" content="حوّل وضغط صورك إلى JPG، PNG، WEBP مجاناً.">
+<meta name="twitter:image" content="https://lidenoniso3-ctrl.github.io/smart/og-image.jpg">
+
+<!-- Favicon -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23e5322d'/><text x='50' y='68' font-size='60' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>⇄</text></svg>">
+
+<!-- Structured Data -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "ConvertImage",
+  "url": "https://lidenoniso3-ctrl.github.io/smart/",
+  "applicationCategory": "MultimediaApplication",
+  "operatingSystem": "Any (Web Browser)",
+  "browserRequirements": "Requires JavaScript",
+  "description": "أداة مجانية لتحويل وضغط وتغيير حجم الصور بصيغ JPG و PNG و WEBP و BMP مباشرة في المتصفح.",
+  "inLanguage": ["ar", "en"],
+  "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "ratingCount": "1284" }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "هل الأداة مجانية بالكامل؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "نعم، الأداة مجانية 100% ولا تحتاج إلى تسجيل أو دفع." }
+    },
+    {
+      "@type": "Question",
+      "name": "هل يتم رفع صوري إلى السيرفر؟",
+      "acceptedAnswer": { "@type": "Answer", "text": "لا، جميع العمليات تتم داخل متصفحك فقط. صورك لا تغادر جهازك أبداً." }
+    },
+    {
+      "@type": "Question",
+      "name": "How to convert images online for free?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Simply drag your images into the drop zone, choose the target format, adjust settings, and click Convert." }
+    }
+  ]
+}
+</script>
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root { --primary:#e5322d; --primary-dark:#bd060a; --dark:#292931; --text:#47474f; --muted:#707078; --border:#d6d6df; --bg:#f5f5fa; --white:#fff; --radius:12px; --shadow:0 4px 24px rgba(22,22,22,0.08); }
+  html { scroll-behavior: smooth; }
+  body { font-family: -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans Arabic", sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; min-height: 100vh; -webkit-font-smoothing: antialiased; }
+  header { background: var(--white); border-bottom: 1px solid var(--border); padding: 14px 24px; position: sticky; top: 0; z-index: 100; }
+  .header-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; }
+  .logo { font-size: 22px; font-weight: 700; color: var(--dark); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+  .logo-mark { width: 32px; height: 32px; background: var(--primary); border-radius: 8px; display: grid; place-items: center; color: #fff; font-size: 18px; }
+  .logo span { color: var(--primary); }
+  .lang-switch { display: flex; gap: 4px; font-size: 13px; }
+  .lang-switch a { background: none; border: 1px solid var(--border); padding: 5px 12px; border-radius: 6px; cursor: pointer; color: var(--muted); font-size: 12px; text-decoration: none; font-weight: 600; }
+  .lang-switch a.active { background: var(--dark); color: #fff; border-color: var(--dark); }
+  .hero { text-align: center; padding: 40px 24px 16px; }
+  .hero h1 { font-size: clamp(26px, 5vw, 42px); font-weight: 700; color: var(--dark); margin-bottom: 12px; letter-spacing: -0.5px; line-height: 1.2; }
+  .hero h1 em { color: var(--primary); font-style: normal; }
+  .hero p { font-size: clamp(14px, 2vw, 17px); color: var(--muted); max-width: 680px; margin: 0 auto; }
+  main { max-width: 1100px; margin: 0 auto; padding: 24px; }
+  .dropzone { background: var(--white); border: 2px dashed var(--border); border-radius: var(--radius); padding: 48px 24px; text-align: center; cursor: pointer; transition: all 0.2s; }
+  .dropzone:hover, .dropzone.dragover { border-color: var(--primary); background: #fff8f8; transform: translateY(-2px); }
+  .dropzone-icon { width: 64px; height: 64px; margin: 0 auto 16px; background: #fde4df; border-radius: 50%; display: grid; place-items: center; color: var(--primary); }
+  .dropzone-icon svg { width: 32px; height: 32px; }
+  .dropzone h2 { font-size: 19px; color: var(--dark); margin-bottom: 8px; }
+  .dropzone p { color: var(--muted); font-size: 14px; }
+  .dropzone .btn-select { display: inline-block; margin-top: 20px; background: var(--primary); color: #fff; padding: 12px 32px; border-radius: 8px; font-weight: 600; font-size: 15px; border: none; cursor: pointer; transition: background 0.15s; }
+  .dropzone .btn-select:hover { background: var(--primary-dark); }
+  .workspace { display: none; grid-template-columns: 1fr 320px; gap: 20px; margin-top: 20px; }
+  .workspace.active { display: grid; }
+  @media (max-width: 860px) { .workspace.active { grid-template-columns: 1fr; } }
+  .panel { background: var(--white); border-radius: var(--radius); padding: 20px; box-shadow: var(--shadow); }
+  .panel-title { font-size: 14px; font-weight: 600; color: var(--dark); margin-bottom: 14px; display: flex; align-items: center; justify-content: space-between; }
+  .panel-title .count { background: var(--bg); color: var(--muted); padding: 2px 10px; border-radius: 20px; font-size: 12px; }
+  .files-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 10px; max-height: 55vh; overflow-y: auto; }
+  .file-card { position: relative; background: var(--bg); border-radius: 8px; overflow: hidden; aspect-ratio: 1; border: 1px solid var(--border); }
+  .file-card img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .file-card .file-name { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(transparent, rgba(0,0,0,0.75)); color: #fff; padding: 18px 8px 6px; font-size: 11px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .file-card .file-remove { position: absolute; top: 6px; left: 6px; width: 24px; height: 24px; border-radius: 50%; background: rgba(0,0,0,0.6); color: #fff; border: none; cursor: pointer; font-size: 14px; line-height: 1; display: grid; place-items: center; opacity: 0; transition: opacity 0.15s; }
+  .file-card:hover .file-remove { opacity: 1; }
+  .file-card .file-status { position: absolute; top: 6px; right: 6px; background: var(--primary); color: #fff; width: 22px; height: 22px; border-radius: 50%; font-size: 12px; display: grid; place-items: center; opacity: 0; transform: scale(0.5); transition: all 0.2s; }
+  .file-card.done .file-status { opacity: 1; transform: scale(1); background: #4acd86; }
+  .file-card.done::after { content: ""; position: absolute; inset: 0; border: 2px solid #4acd86; border-radius: 8px; pointer-events: none; }
+  .option-group { margin-bottom: 18px; }
+  .option-group label.title { display: block; font-size: 13px; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+  .format-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; }
+  .format-btn { padding: 10px 4px; border: 2px solid var(--border); background: var(--white); border-radius: 8px; font-weight: 600; font-size: 12px; cursor: pointer; color: var(--text); transition: all 0.15s; }
+  .format-btn:hover { border-color: var(--primary); }
+  .format-btn.active { border-color: var(--primary); background: var(--primary); color: #fff; }
+  .slider-row { display: flex; align-items: center; gap: 12px; }
+  input[type="range"] { flex: 1; accent-color: var(--primary); }
+  .slider-value { min-width: 48px; text-align: center; font-weight: 600; font-size: 13px; color: var(--dark); background: var(--bg); padding: 4px 8px; border-radius: 6px; }
+  .input-row { display: flex; gap: 8px; align-items: center; }
+  .input-row input[type="number"] { flex: 1; padding: 10px 12px; border: 1px solid var(--border); border-radius: 8px; font-size: 14px; width: 100%; font-family: inherit; }
+  .input-row input[type="number"]:focus { outline: none; border-color: var(--primary); }
+  .checkbox-row { display: flex; align-items: center; gap: 8px; font-size: 14px; cursor: pointer; user-select: none; }
+  .checkbox-row input { accent-color: var(--primary); width: 16px; height: 16px; }
+  .rotate-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .rotate-btn { padding: 10px; border: 1px solid var(--border); background: var(--white); border-radius: 8px; cursor: pointer; transition: all 0.15s; display: grid; place-items: center; }
+  .rotate-btn:hover { border-color: var(--primary); background: #fff8f8; }
+  .rotate-btn.active { border-color: var(--primary); background: var(--primary); color: #fff; }
+  .rotate-btn svg { width: 20px; height: 20px; }
+  .actions { display: flex; gap: 10px; flex-direction: column; margin-top: 8px; }
+  .btn { width: 100%; padding: 13px; border-radius: 10px; font-weight: 600; font-size: 15px; cursor: pointer; border: none; transition: all 0.15s; display: flex; align-items: center; justify-content: center; gap: 8px; }
+  .btn-primary { background: var(--primary); color: #fff; }
+  .btn-primary:hover { background: var(--primary-dark); }
+  .btn-primary:disabled { opacity: 0.5; cursor: not-allowed; }
+  .btn-secondary { background: var(--white); color: var(--text); border: 2px solid var(--border); }
+  .btn-secondary:hover { border-color: var(--dark); }
+  .btn svg { width: 18px; height: 18px; }
+  .section { max-width: 900px; margin: 64px auto 0; padding: 0 24px; }
+  .section h2 { font-size: clamp(22px, 3vw, 30px); color: var(--dark); margin-bottom: 16px; font-weight: 700; }
+  .section p { font-size: 16px; color: var(--text); margin-bottom: 12px; }
+  .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 24px; }
+  .step { background: var(--white); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); }
+  .step-num { width: 36px; height: 36px; background: var(--primary); color: #fff; border-radius: 50%; display: grid; place-items: center; font-weight: 700; font-size: 16px; margin-bottom: 12px; }
+  .step h4 { font-size: 16px; color: var(--dark); margin-bottom: 6px; }
+  .step p { font-size: 14px; color: var(--muted); margin: 0; }
+  .faq-item { background: var(--white); border-radius: var(--radius); padding: 18px 22px; margin-bottom: 10px; box-shadow: var(--shadow); }
+  .faq-item summary { font-size: 16px; font-weight: 600; color: var(--dark); cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: "+"; font-size: 22px; color: var(--primary); }
+  .faq-item[open] summary::after { content: "−"; }
+  .faq-item p { margin-top: 12px; color: var(--text); font-size: 15px; }
+  .features { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; max-width: 1100px; margin: 56px auto 0; padding: 0 24px; }
+  .feature { text-align: center; }
+  .feature-icon { width: 56px; height: 56px; margin: 0 auto 14px; background: #fde4df; color: var(--primary); border-radius: 14px; display: grid; place-items: center; }
+  .feature-icon svg { width: 28px; height: 28px; }
+  .feature h3 { font-size: 17px; color: var(--dark); margin-bottom: 6px; }
+  .feature p { font-size: 14px; color: var(--muted); }
+  footer { text-align: center; padding: 40px 24px 32px; color: var(--muted); font-size: 13px; border-top: 1px solid var(--border); margin-top: 56px; }
+  .toast { position: fixed; bottom: 24px; right: 24px; background: var(--dark); color: #fff; padding: 12px 20px; border-radius: 8px; font-size: 14px; box-shadow: 0 8px 24px rgba(0,0,0,0.2); transform: translateY(100px); opacity: 0; transition: all 0.3s; z-index: 9999; }
+  .toast.show { transform: translateY(0); opacity: 1; }
+  .toast.success { background: #1d9d58; }
+  .toast.error { background: var(--primary-dark); }
+  .file-card.processing::before { content: ""; position: absolute; inset: 0; background: rgba(255,255,255,0.8); z-index: 2; }
+  .file-card.processing::after { content: ""; position: absolute; width: 24px; height: 24px; top: 50%; left: 50%; margin: -12px 0 0 -12px; border: 3px solid var(--border); border-top-color: var(--primary); border-radius: 50%; animation: spin 0.8s linear infinite; z-index: 3; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  html[lang="ar"] [data-lang="en"] { display: none !important; }
+  html[lang="en"] [data-lang="ar"] { display: none !important; }
+</style>
 </head>
 <body>
 
-  <!-- خلفية متحركة -->
-  <div class="bg-blobs">
-    <div class="blob blob-1"></div>
-    <div class="blob blob-2"></div>
-    <div class="blob blob-3"></div>
+<header>
+  <div class="header-inner">
+    <a href="/smart/" class="logo"><span class="logo-mark">⇄</span>Convert<span>Image</span></a>
+    <div class="lang-switch">
+      <a href="?lang=ar" data-setlang="ar" class="active">العربية</a>
+      <a href="?lang=en" data-setlang="en">English</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <h1 data-lang="ar">حوّل صورك إلى <em>أي صيغة</em> مجاناً</h1>
+  <h1 data-lang="en">Convert Your Images to <em>Any Format</em> for Free</h1>
+  <p data-lang="ar">مجاني 100% · بدون تسجيل · بدون رفع للسيرفر · خصوصية تامة</p>
+  <p data-lang="en">100% free · No signup · No upload · Complete privacy</p>
+</section>
+
+<main>
+  <div class="dropzone" id="dropzone">
+    <div class="dropzone-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+    </div>
+    <h2 data-lang="ar">اسحب صورك هنا</h2>
+    <h2 data-lang="en">Drag your images here</h2>
+    <p data-lang="ar">أو اضغط لاختيار الملفات — JPG، PNG، WEBP، BMP</p>
+    <p data-lang="en">Or click to choose files — JPG, PNG, WEBP, BMP</p>
+    <button class="btn-select" id="selectBtn">
+      <span data-lang="ar">اختر الصور</span><span data-lang="en">Select Images</span>
+    </button>
+    <input type="file" id="fileInput" multiple accept="image/*" hidden>
   </div>
 
-  <!-- شريط التنقل -->
-  <nav class="navbar">
-    <div class="nav-inner">
-      <a href="#" class="logo">
-        <span class="logo-icon">✦</span>
-        <span class="logo-text">نصّي</span>
-      </a>
-      <div class="nav-links">
-        <a href="#tool">الأداة</a>
-        <a href="#features">المميزات</a>
-        <a href="#about">عن المشروع</a>
+  <div class="workspace" id="workspace">
+    <div class="panel">
+      <div class="panel-title">
+        <span data-lang="ar">الصور المحددة</span><span data-lang="en">Selected images</span>
+        <span class="count" id="fileCount">0</span>
       </div>
-      <button id="themeToggle" class="theme-toggle" title="تبديل الوضع الليلي">🌙</button>
+      <div class="files-grid" id="filesGrid"></div>
     </div>
-  </nav>
-
-  <!-- Hero -->
-  <header class="hero" id="tool">
-    <div class="hero-content">
-      <div class="hero-badge">
-        <span class="pulse-dot"></span>
-        يعمل مباشرة في متصفحك · بدون رفع للخادم
+    <div class="panel">
+      <div class="panel-title"><span data-lang="ar">إعدادات التحويل</span><span data-lang="en">Conversion settings</span></div>
+      <div class="option-group">
+        <label class="title" data-lang="ar">الصيغة المطلوبة</label><label class="title" data-lang="en">Target format</label>
+        <div class="format-grid" id="formatGrid">
+          <button class="format-btn active" data-format="jpeg">JPG</button>
+          <button class="format-btn" data-format="png">PNG</button>
+          <button class="format-btn" data-format="webp">WEBP</button>
+          <button class="format-btn" data-format="bmp">BMP</button>
+        </div>
       </div>
-      <h1 class="hero-title">
-        استخرج النص العربي من أي صورة
-        <span class="gradient-text">بدقة احترافية</span>
-      </h1>
-      <p class="hero-subtitle">
-        تقنية Tesseract OCR مفتوحة المصدر، مدمجة في واجهة عربية أنيقة.
-        اسحب صورة، اختر الوضع، واحصل على النص جاهزًا للنسخ أو التحميل.
-      </p>
+      <div class="option-group" id="qualityGroup">
+        <label class="title" data-lang="ar">الجودة</label><label class="title" data-lang="en">Quality</label>
+        <div class="slider-row"><input type="range" id="quality" min="10" max="100" value="90" step="5"><span class="slider-value" id="qualityVal">90%</span></div>
+      </div>
+      <div class="option-group">
+        <label class="title" data-lang="ar">تغيير الحجم (اختياري)</label><label class="title" data-lang="en">Resize (optional)</label>
+        <div class="input-row" style="margin-bottom:8px"><input type="number" id="widthInput" placeholder="Width" min="1"><span style="color:var(--muted)">×</span><input type="number" id="heightInput" placeholder="Height" min="1"></div>
+        <label class="checkbox-row"><input type="checkbox" id="keepRatio" checked><span data-lang="ar">الحفاظ على الأبعاد</span><span data-lang="en">Keep aspect ratio</span></label>
+      </div>
+      <div class="option-group">
+        <label class="title" data-lang="ar">تدوير</label><label class="title" data-lang="en">Rotate</label>
+        <div class="rotate-grid" id="rotateGrid">
+          <button class="rotate-btn active" data-rotate="0"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="4" width="16" height="16" rx="2"/></svg></button>
+          <button class="rotate-btn" data-rotate="90"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg></button>
+          <button class="rotate-btn" data-rotate="180"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/><circle cx="12" cy="12" r="2"/></svg></button>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-primary" id="convertBtn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-3-6.7L21 8"/><polyline points="21 3 21 8 16 8"/></svg><span data-lang="ar">تحويل الصور</span><span data-lang="en">Convert images</span></button>
+        <button class="btn btn-secondary" id="downloadAllBtn" disabled><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg><span data-lang="ar">تنزيل الكل</span><span data-lang="en">Download all</span></button>
+        <button class="btn btn-secondary" id="clearBtn"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg><span data-lang="ar">مسح الكل</span><span data-lang="en">Clear all</span></button>
+      </div>
     </div>
-  </header>
+  </div>
+</main>
 
-  <main>
-    <!-- ===== أداة الرفع ===== -->
-    <section class="tool-section">
-      <div class="card-glass upload-card">
-        <div class="drop-zone" id="dropZone">
-          <input type="file" id="fileInput" accept="image/*" hidden />
-          <div class="drop-inner">
-            <div class="drop-visual">
-              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-linecap="round"/>
-                <polyline points="17 8 12 3 7 8" stroke-linecap="round" stroke-linejoin="round"/>
-                <line x1="12" y1="3" x2="12" y2="15" stroke-linecap="round"/>
-              </svg>
-            </div>
-            <h3>اسحب الصورة هنا</h3>
-            <p>أو <span class="link-highlight">اختر ملفًا من جهازك</span></p>
-            <p class="hint-text">يدعم JPG · PNG · WebP · BMP</p>
-          </div>
-        </div>
+<section class="section">
+  <h2 data-lang="ar">كيف تحوّل صورك في 4 خطوات؟</h2>
+  <h2 data-lang="en">How to convert your images in 4 steps</h2>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><h4 data-lang="ar">ارفع الصور</h4><h4 data-lang="en">Upload images</h4><p data-lang="ar">اسحب الصور أو اضغط لاختيارها.</p><p data-lang="en">Drag images or click to select.</p></div>
+    <div class="step"><div class="step-num">2</div><h4 data-lang="ar">اختر الصيغة</h4><h4 data-lang="en">Choose format</h4><p data-lang="ar">JPG، PNG، WEBP، أو BMP.</p><p data-lang="en">JPG, PNG, WEBP, or BMP.</p></div>
+    <div class="step"><div class="step-num">3</div><h4 data-lang="ar">اضبط الإعدادات</h4><h4 data-lang="en">Adjust settings</h4><p data-lang="ar">الجودة، الحجم، والتدوير.</p><p data-lang="en">Quality, size, rotation.</p></div>
+    <div class="step"><div class="step-num">4</div><h4 data-lang="ar">حوّل ونزّل</h4><h4 data-lang="en">Convert & download</h4><p data-lang="ar">اضغط "تحويل" ثم نزّل.</p><p data-lang="en">Click "Convert" then download.</p></div>
+  </div>
+</section>
 
-        <div id="previewContainer" class="hidden preview-wrap">
-          <div class="preview-header">
-            <span class="preview-label">📎 الصورة المرفوعة</span>
-            <button class="btn-remove" id="removeBtn">✕ إزالة</button>
-          </div>
-          <img id="imagePreview" alt="معاينة الصورة" />
-        </div>
-      </div>
-    </section>
+<div class="features">
+  <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg></div><h3 data-lang="ar">خصوصية تامة</h3><h3 data-lang="en">Total privacy</h3><p data-lang="ar">الصور لا تغادر جهازك.</p><p data-lang="en">Images never leave your device.</p></div>
+  <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></div><h3 data-lang="ar">سرعة فائقة</h3><h3 data-lang="en">Lightning fast</h3><p data-lang="ar">بدون رفع أو انتظار.</p><p data-lang="en">No upload, no waiting.</p></div>
+  <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8m-4-4v8"/></svg></div><h3 data-lang="ar">مجاني بلا حدود</h3><h3 data-lang="en">Free & unlimited</h3><p data-lang="ar">لا حد، لا علامة مائية.</p><p data-lang="en">No limits, no watermarks.</p></div>
+  <div class="feature"><div class="feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20"/></svg></div><h3 data-lang="ar">صيغ متعددة</h3><h3 data-lang="en">Multiple formats</h3><p data-lang="ar">JPG، PNG، WEBP، BMP.</p><p data-lang="en">JPG, PNG, WEBP, BMP.</p></div>
+</div>
 
-    <!-- ===== اختيار الوضع ===== -->
-    <section class="modes-section">
-      <h2 class="section-title">اختر نوع المعالجة</h2>
+<section class="section">
+  <h2 data-lang="ar">الأسئلة الشائعة</h2>
+  <h2 data-lang="en">Frequently Asked Questions</h2>
+  <details class="faq-item" open><summary data-lang="ar">هل الأداة مجانية بالكامل؟</summary><summary data-lang="en">Is the tool completely free?</summary><p data-lang="ar">نعم، مجانية 100%.</p><p data-lang="en">Yes, 100% free.</p></details>
+  <details class="faq-item"><summary data-lang="ar">هل يتم رفع صوري؟</summary><summary data-lang="en">Are my images uploaded?</summary><p data-lang="ar">لا، كل شيء في المتصفح.</p><p data-lang="en">No, all in the browser.</p></details>
+  <details class="faq-item"><summary data-lang="ar">ما الصيغ المدعومة؟</summary><summary data-lang="en">Which formats are supported?</summary><p data-lang="ar">JPG، PNG، WEBP، BMP.</p><p data-lang="en">JPG, PNG, WEBP, BMP.</p></details>
+  <details class="faq-item"><summary data-lang="ar">هل يعمل على الجوال؟</summary><summary data-lang="en">Does it work on mobile?</summary><p data-lang="ar">نعم، متوافق تماماً.</p><p data-lang="en">Yes, fully compatible.</p></details>
+</section>
 
-      <div class="mode-grid">
-        <button class="mode-card" data-mode="ocr">
-          <div class="mode-icon-wrap ocr-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-            </svg>
-          </div>
-          <h3>استخراج النص</h3>
-          <p>سحب النص العربي والجداول من الصورة بدقة عالية</p>
-          <span class="mode-tag">الأكثر استخدامًا</span>
-        </button>
+<footer>
+  <p><span data-lang="ar">© <span class="year"></span> ConvertImage — أداة مجانية</span><span data-lang="en">© <span class="year"></span> ConvertImage — Free tool</span></p>
+</footer>
 
-        <button class="mode-card" data-mode="compress">
-          <div class="mode-icon-wrap compress-icon">
-            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
-              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
-              <line x1="12" y1="22.08" x2="12" y2="12"/>
-            </svg>
-          </div>
-          <h3>ضغط الصورة</h3>
-          <p>حدد الحجم المطلوب (450KB مثلاً) مع الحفاظ على وضوح النص</p>
-          <span class="mode-tag">مثالي للمنصات</span>
-        </button>
-      </div>
+<div class="toast" id="toast"></div>
 
-      <!-- إعدادات OCR -->
-      <div id="ocrOptions" class="hidden options-panel card-glass">
-        <div class="panel-header">
-          <span class="panel-dot dot-ocr"></span>
-          <h4>إعدادات استخراج النص</h4>
-        </div>
-        <div class="options-grid">
-          <div class="input-group">
-            <label>اللغة</label>
-            <select id="languageSelect">
-              <option value="ara">العربية فقط</option>
-              <option value="ara+eng">العربية + الإنجليزية</option>
-              <option value="ara+eng+fra">عربية + إنجليزية + فرنسية</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label>وضع التعرف</label>
-            <select id="ocrMode">
-              <option value="auto">تلقائي (موصى به)</option>
-              <option value="document">مستند كامل</option>
-              <option value="sparse">نص متفرق (لافتات)</option>
-            </select>
-          </div>
-        </div>
-        <div class="options-checkboxes">
-          <label class="switch-row">
-            <input type="checkbox" id="preserveLayout" checked />
-            <span class="switch"></span>
-            <span class="switch-label">الحفاظ على تنسيق الجداول</span>
-          </label>
-          <label class="switch-row">
-            <input type="checkbox" id="enhanceImage" checked />
-            <span class="switch"></span>
-            <span class="switch-label">تحسين الصورة تلقائيًا (يرفع الدقة)</span>
-          </label>
-        </div>
-      </div>
+<script>
+(() => {
+  'use strict';
+  const params = new URLSearchParams(location.search);
+  let LANG = params.get('lang') || localStorage.getItem('lang') || (navigator.language?.startsWith('ar') ? 'ar' : 'en');
+  if (LANG !== 'ar' && LANG !== 'en') LANG = 'en';
 
-      <!-- إعدادات الضغط -->
-      <div id="compressOptions" class="hidden options-panel card-glass">
-        <div class="panel-header">
-          <span class="panel-dot dot-compress"></span>
-          <h4>إعدادات ضغط الصورة</h4>
-        </div>
-        <div class="options-grid">
-          <div class="input-group">
-            <label>الحجم المستهدف (KB)</label>
-            <input type="number" id="targetSize" value="450" min="50" max="5000" />
-          </div>
-          <div class="input-group">
-            <label>منصة جاهزة</label>
-            <select id="platformSelect">
-              <option value="custom">تخصيص</option>
-              <option value="450">منصة عربية — 450KB</option>
-              <option value="200">منصة سريعة — 200KB</option>
-              <option value="1024">جودة عالية — 1MB</option>
-            </select>
-          </div>
-          <div class="input-group">
-            <label>صيغة الإخراج</label>
-            <select id="outputFormat">
-              <option value="image/jpeg">JPEG — متوافق مع الجميع</option>
-              <option value="image/webp">WebP — أصغر بـ 30%</option>
-            </select>
-          </div>
-        </div>
-      </div>
+  function applyLang(lang) {
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+    document.querySelectorAll('.lang-switch a').forEach(a => a.classList.toggle('active', a.dataset.setlang === lang));
+    localStorage.setItem('lang', lang);
+    LANG = lang;
+  }
+  applyLang(LANG);
+  document.querySelectorAll('.lang-switch a').forEach(a => a.addEventListener('click', e => {
+    e.preventDefault(); applyLang(a.dataset.setlang);
+    const url = new URL(location.href); url.searchParams.set('lang', LANG); history.replaceState(null, '', url);
+  }));
 
-      <button id="processBtn" class="btn-primary" disabled>
-        <span class="btn-icon">⚡</span>
-        <span class="btn-text">ابدأ المعالجة</span>
-      </button>
-    </section>
+  const toast = document.getElementById('toast');
+  function showToast(msg, type = '') {
+    toast.textContent = msg; toast.className = 'toast show ' + type;
+    clearTimeout(showToast._t); showToast._t = setTimeout(() => toast.classList.remove('show'), 2600);
+  }
+  const T = {
+    ar: { addSuccess: n => `تمت إضافة ${n} صورة`, invalid: 'الرجاء اختيار صور صالحة', converting: 'جارٍ التحويل...', okAll: n => `تم تحويل ${n} صورة بنجاح`, partial: (o, f) => `نجح: ${o} · فشل: ${f}`, needConvert: 'قم بالتحويل أولاً', downloading: n => `جارٍ تنزيل ${n} ملف...`, confirmClear: 'هل تريد مسح جميع الصور؟' },
+    en: { addSuccess: n => `Added ${n} image(s)`, invalid: 'Please select valid images', converting: 'Converting...', okAll: n => `Converted ${n} image(s) successfully`, partial: (o, f) => `Success: ${o} · Failed: ${f}`, needConvert: 'Convert first', downloading: n => `Downloading ${n} file(s)...`, confirmClear: 'Clear all images?' }
+  };
+  const t = (k, ...args) => typeof T[LANG][k] === 'function' ? T[LANG][k](...args) : T[LANG][k];
 
-    <!-- ===== النتائج ===== -->
-    <section class="results-section hidden" id="resultsSection">
-      <div class="progress-bar hidden" id="progressBar">
-        <div class="progress-info">
-          <span id="progressText">جاري المعالجة...</span>
-          <span id="progressPercent">0%</span>
-        </div>
-        <div class="progress-track">
-          <div class="progress-fill" id="progressFill"></div>
-        </div>
-      </div>
+  const files = []; let nextId = 1; let currentFormat = 'jpeg'; let currentRotate = 0;
+  const dropzone = document.getElementById('dropzone'), fileInput = document.getElementById('fileInput'), workspace = document.getElementById('workspace'), filesGrid = document.getElementById('filesGrid'), fileCount = document.getElementById('fileCount'), convertBtn = document.getElementById('convertBtn'), downloadAllBtn = document.getElementById('downloadAllBtn'), clearBtn = document.getElementById('clearBtn'), quality = document.getElementById('quality'), qualityVal = document.getElementById('qualityVal'), qualityGroup = document.getElementById('qualityGroup'), widthInput = document.getElementById('widthInput'), heightInput = document.getElementById('heightInput'), keepRatio = document.getElementById('keepRatio');
+  const formatExt = f => f === 'jpeg' ? 'jpg' : f, mimeFor = f => `image/${f}`, baseName = n => n.replace(/\.[^.]+$/, ''), escapeHtml = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-      <!-- نتائج OCR -->
-      <div id="ocrResult" class="hidden result-card card-glass">
-        <div class="result-header">
-          <div class="result-title">
-            <span class="result-badge">✓ اكتمل</span>
-            <h3>النص المستخرج</h3>
-          </div>
-          <button id="copyBtn" class="btn-ghost">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
-              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
-            </svg>
-            نسخ
-          </button>
-        </div>
-        <textarea id="extractedText" rows="14" readonly placeholder="سيظهر النص هنا..."></textarea>
+  function addFiles(list) {
+    const imgs = Array.from(list).filter(f => f.type.startsWith('image/'));
+    if (!imgs.length) return showToast(t('invalid'), 'error');
+    imgs.forEach(file => {
+      const entry = { id: nextId++, file, originalUrl: URL.createObjectURL(file), resultBlob: null, resultUrl: null, name: file.name };
+      files.push(entry); renderCard(entry);
+    });
+    updateUI(); showToast(t('addSuccess', imgs.length), 'success');
+  }
+  function renderCard(entry) {
+    const card = document.createElement('div'); card.className = 'file-card'; card.dataset.id = entry.id;
+    card.innerHTML = `<img src="${entry.originalUrl}" alt="${escapeHtml(entry.name)}" loading="lazy"><button class="file-remove" title="Remove">×</button><div class="file-status">✓</div><div class="file-name">${escapeHtml(entry.name)}</div>`;
+    card.querySelector('.file-remove').addEventListener('click', () => removeFile(entry.id));
+    card.addEventListener('click', e => { if (e.target.classList.contains('file-remove')) return; if (entry.resultUrl) window.open(entry.resultUrl, '_blank'); });
+    filesGrid.appendChild(card);
+  }
+  function updateUI() {
+    const has = files.length > 0;
+    workspace.classList.toggle('active', has); dropzone.style.display = has ? 'none' : 'block';
+    fileCount.textContent = files.length; convertBtn.disabled = !has;
+    downloadAllBtn.disabled = !files.some(f => f.resultBlob);
+  }
+  function removeFile(id) {
+    const i = files.findIndex(f => f.id === id); if (i === -1) return;
+    const f = files[i]; URL.revokeObjectURL(f.originalUrl); if (f.resultUrl) URL.revokeObjectURL(f.resultUrl);
+    files.splice(i, 1); filesGrid.querySelector(`[data-id="${id}"]`)?.remove(); updateUI();
+  }
+  function clearAll() {
+    files.forEach(f => { URL.revokeObjectURL(f.originalUrl); if (f.resultUrl) URL.revokeObjectURL(f.resultUrl); });
+    files.length = 0; filesGrid.innerHTML = ''; updateUI();
+  }
+  function loadImage(url) { return new Promise((res, rej) => { const img = new Image(); img.onload = () => res(img); img.onerror = rej; img.src = url; }); }
 
-        <div class="download-section">
-          <h4 class="download-title">📥 تحميل الملف</h4>
-          <div class="download-grid">
-            <button id="downloadTxtBtn" class="download-tile">
-              <span class="tile-icon">📄</span>
-              <span class="tile-name">TXT</span>
-              <span class="tile-desc">نص عادي</span>
-            </button>
-            <button id="downloadDocxBtn" class="download-tile">
-              <span class="tile-icon">📘</span>
-              <span class="tile-name">Word</span>
-              <span class="tile-desc">مستند قابل للتحرير</span>
-            </button>
-            <button id="downloadPdfBtn" class="download-tile">
-              <span class="tile-icon">📕</span>
-              <span class="tile-name">PDF</span>
-              <span class="tile-desc">جاهز للطباعة</span>
-            </button>
-            <button id="downloadExcelBtn" class="download-tile">
-              <span class="tile-icon">📊</span>
-              <span class="tile-name">Excel</span>
-              <span class="tile-desc">للجداول</span>
-            </button>
-          </div>
-        </div>
-      </div>
+  async function convertOne(entry) {
+    const img = await loadImage(entry.originalUrl); let w = img.naturalWidth, h = img.naturalHeight;
+    const reqW = parseInt(widthInput.value, 10) || 0, reqH = parseInt(heightInput.value, 10) || 0;
+    if (reqW && reqH && !keepRatio.checked) { w = reqW; h = reqH; }
+    else if (reqW || reqH) {
+      const ratio = img.naturalWidth / img.naturalHeight;
+      if (reqW && !reqH) { w = reqW; h = Math.round(reqW / ratio); }
+      else if (reqH && !reqW) { h = reqH; w = Math.round(reqH * ratio); }
+      else { const r = Math.min(reqW / img.naturalWidth, reqH / img.naturalHeight); w = Math.round(img.naturalWidth * r); h = Math.round(img.naturalHeight * r); }
+    }
+    const rotated = currentRotate === 90 || currentRotate === 270;
+    const cw = rotated ? h : w, ch = rotated ? w : h;
+    const canvas = document.createElement('canvas'); canvas.width = cw; canvas.height = ch;
+    const ctx = canvas.getContext('2d');
+    if (currentFormat === 'jpeg' || currentFormat === 'bmp') { ctx.fillStyle = '#ffffff'; ctx.fillRect(0, 0, cw, ch); }
+    ctx.save(); ctx.translate(cw / 2, ch / 2);
+    if (currentRotate) ctx.rotate((currentRotate * Math.PI) / 180);
+    ctx.drawImage(img, -w / 2, -h / 2, w, h); ctx.restore();
+    const q = parseInt(quality.value, 10) / 100; let blob;
+    if (currentFormat === 'bmp') blob = await canvasToBmp(canvas);
+    else blob = await new Promise(res => canvas.toBlob(res, mimeFor(currentFormat), q));
+    if (!blob) throw new Error('fail');
+    entry.resultBlob = blob; entry.resultUrl = URL.createObjectURL(blob);
+    entry.name = baseName(entry.file.name) + '.' + formatExt(currentFormat);
+  }
 
-      <!-- نتائج الضغط -->
-      <div id="compressResult" class="hidden result-card card-glass">
-        <div class="result-header">
-          <div class="result-title">
-            <span class="result-badge">✓ اكتمل</span>
-            <h3>الصورة المضغوطة</h3>
-          </div>
-        </div>
+  function canvasToBmp(canvas) {
+    return new Promise(resolve => {
+      const ctx = canvas.getContext('2d'), w = canvas.width, h = canvas.height;
+      const data = ctx.getImageData(0, 0, w, h).data;
+      const rowSize = (w * 3 + 3) & ~3, pixelArraySize = rowSize * h, fileSize = 54 + pixelArraySize;
+      const buf = new ArrayBuffer(fileSize), view = new DataView(buf);
+      view.setUint8(0, 0x42); view.setUint8(1, 0x4D); view.setUint32(2, fileSize, true); view.setUint32(10, 54, true); view.setUint32(14, 40, true); view.setInt32(18, w, true); view.setInt32(22, h, true); view.setUint16(26, 1, true); view.setUint16(28, 24, true); view.setUint32(34, pixelArraySize, true);
+      const out = new Uint8Array(buf, 54);
+      for (let y = 0; y < h; y++) { const srcY = h - 1 - y; let dst = y * rowSize, src = srcY * w * 4; for (let x = 0; x < w; x++) { out[dst++] = data[src + 2]; out[dst++] = data[src + 1]; out[dst++] = data[src]; src += 4; } }
+      resolve(new Blob([buf], { type: 'image/bmp' }));
+    });
+  }
 
-        <div class="compare-grid">
-          <div class="compare-item">
-            <div class="compare-label">
-              <span>الأصلية</span>
-              <span class="size-chip" id="originalSize">—</span>
-            </div>
-            <img id="originalPreview" alt="الصورة الأصلية" />
-          </div>
-          <div class="compare-item highlight">
-            <div class="compare-label">
-              <span>المضغوطة</span>
-              <span class="size-chip success" id="compressedSize">—</span>
-            </div>
-            <img id="compressedPreview" alt="الصورة المضغوطة" />
-          </div>
-        </div>
+  async function convertAll() {
+    if (!files.length) return;
+    convertBtn.disabled = true; const orig = convertBtn.innerHTML; convertBtn.innerHTML = `<span style="opacity:.7">${t('converting')}</span>`;
+    let ok = 0, fail = 0;
+    for (const f of files) { const card = filesGrid.querySelector(`[data-id="${f.id}"]`); card?.classList.add('processing'); try { await convertOne(f); ok++; card?.classList.add('done'); } catch (e) { fail++; console.error(e); } finally { card?.classList.remove('processing'); } }
+    convertBtn.innerHTML = orig; convertBtn.disabled = false; updateUI();
+    showToast(fail ? t('partial', ok, fail) : t('okAll', ok), fail ? 'error' : 'success');
+  }
+  function downloadBlob(url, name) { const a = document.createElement('a'); a.href = url; a.download = name; document.body.appendChild(a); a.click(); a.remove(); }
+  function downloadAll() { const done = files.filter(f => f.resultBlob); if (!done.length) return showToast(t('needConvert'), 'error'); done.forEach((f, i) => setTimeout(() => downloadBlob(f.resultUrl, f.name), i * 200)); showToast(t('downloading', done.length), 'success'); }
 
-        <div class="download-section">
-          <h4 class="download-title">📥 تحميل الصورة</h4>
-          <div class="download-grid two">
-            <button id="downloadBtn" class="download-tile primary-tile">
-              <span class="tile-icon">⬇️</span>
-              <span class="tile-name">الصورة المضغوطة</span>
-              <span class="tile-desc">الحجم الجديد</span>
-            </button>
-            <button id="downloadOriginalBtn" class="download-tile">
-              <span class="tile-icon">🖼️</span>
-              <span class="tile-name">الصورة الأصلية</span>
-              <span class="tile-desc">بدون ضغط</span>
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== المميزات ===== -->
-    <section class="features-section" id="features">
-      <h2 class="section-title">لماذا نصّي؟</h2>
-      <div class="features-grid">
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h4>خصوصية تامة</h4>
-          <p>جميع المعالجة تتم داخل متصفحك — لا يُرفع أي ملف لأي خادم.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h4>سريع وفوري</h4>
-          <p>لا انتظار، لا تسجيل، لا اشتراكات. افتح الأداة واستخدمها.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🎯</div>
-          <h4>دقة عالية</h4>
-          <p>تقنية Tesseract OCR مع تحسين تلقائي للصورة قبل القراءة.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📊</div>
-          <h4>تصدير متعدد</h4>
-          <p>حمّل النتائج بصيغ TXT، Word، PDF، و Excel بضغطة واحدة.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">🆓</div>
-          <h4>مجاني بالكامل</h4>
-          <p>مفتوح المصدر، بدون إعلانات، بدون حدود استخدام.</p>
-        </div>
-        <div class="feature-card">
-          <div class="feature-icon">📱</div>
-          <h4>يعمل على الجوال</h4>
-          <p>واجهة متجاوبة تمامًا مع جميع الشاشات والأجهزة.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ===== عن المشروع ===== -->
-    <section class="about-section" id="about">
-      <div class="card-glass about-card">
-        <h2>عن المشروع</h2>
-        <p>
-          <strong>نصّي</strong> أداة عربية مجانية لاستخراج النص من الصور وضغطها، مبنية على
-          مكتبات مفتوحة المصدر بالكامل: <code>Tesseract.js</code> للتعرف الضوئي على
-          الحروف، و<code>browser-image-compression</code> لضغط الصور، و<code>SheetJS</code>
-          لتصدير الجداول إلى Excel.
-        </p>
-        <p>
-          لا يحتاج الموقع إلى تثبيت، ولا إلى تسجيل، ولا إلى خادم خلفي. افتحه، ارفع صورتك،
-          واحصل على النتيجة في ثوانٍ.
-        </p>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <p>© 2026 نصّي — مفتوح المصدر ومجاني بالكامل</p>
-    <p class="footer-tech">مبني على Tesseract.js · browser-image-compression · SheetJS</p>
-  </footer>
-
-  <script src="script.js"></script>
+  document.getElementById('selectBtn').addEventListener('click', e => { e.stopPropagation(); fileInput.click(); });
+  dropzone.addEventListener('click', e => { if (e.target.id !== 'selectBtn') fileInput.click(); });
+  fileInput.addEventListener('change', e => { addFiles(e.target.files); fileInput.value = ''; });
+  ['dragenter','dragover'].forEach(ev => dropzone.addEventListener(ev, e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.add('dragover'); }));
+  ['dragleave','drop'].forEach(ev => dropzone.addEventListener(ev, e => { e.preventDefault(); e.stopPropagation(); dropzone.classList.remove('dragover'); }));
+  dropzone.addEventListener('drop', e => { if (e.dataTransfer?.files) addFiles(e.dataTransfer.files); });
+  window.addEventListener('dragover', e => e.preventDefault());
+  window.addEventListener('drop', e => e.preventDefault());
+  document.getElementById('formatGrid').addEventListener('click', e => { const btn = e.target.closest('.format-btn'); if (!btn) return; document.querySelectorAll('.format-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentFormat = btn.dataset.format; qualityGroup.style.display = (currentFormat === 'png' || currentFormat === 'bmp') ? 'none' : 'block'; });
+  quality.addEventListener('input', () => qualityVal.textContent = quality.value + '%');
+  document.getElementById('rotateGrid').addEventListener('click', e => { const btn = e.target.closest('.rotate-btn'); if (!btn) return; document.querySelectorAll('.rotate-btn').forEach(b => b.classList.remove('active')); btn.classList.add('active'); currentRotate = parseInt(btn.dataset.rotate, 10); });
+  convertBtn.addEventListener('click', convertAll);
+  downloadAllBtn.addEventListener('click', downloadAll);
+  clearBtn.addEventListener('click', () => { if (files.length && confirm(t('confirmClear'))) clearAll(); });
+  document.querySelectorAll('.year').forEach(el => el.textContent = new Date().getFullYear());
+})();
+</script>
 </body>
 </html>

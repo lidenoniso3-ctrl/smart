@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lidenoniso3-ctrl.github.io/smart/sitemap.xml

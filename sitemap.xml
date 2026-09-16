@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <url>
+    <loc>https://lidenoniso3-ctrl.github.io/smart/</loc>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="ar" href="https://lidenoniso3-ctrl.github.io/smart/?lang=ar"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lidenoniso3-ctrl.github.io/smart/?lang=en"/>
+  </url>
+  <url>
+    <loc>https://lidenoniso3-ctrl.github.io/smart/?lang=ar</loc>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://lidenoniso3-ctrl.github.io/smart/?lang=en</loc>
+    <priority>1.0</priority>
+  </url>
+</urlset>
