@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#6366f1" />
+  <meta name="description" content="أداة ذكية لاستخراج النص العربي من الصور وضغطها — مجانية ومفتوحة المصدر" />
+  <title>نصّي — استخراج النص العربي من الصور</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Tajawal:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/browser-image-compression@2.0.2/dist/browser-image-compression.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+
+  <!-- خلفية متحركة -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <!-- شريط التنقل -->
+  <nav class="navbar">
+    <div class="nav-inner">
+      <a href="#" class="logo">
+        <span class="logo-icon">✦</span>
+        <span class="logo-text">نصّي</span>
+      </a>
+      <div class="nav-links">
+        <a href="#tool">الأداة</a>
+        <a href="#features">المميزات</a>
+        <a href="#about">عن المشروع</a>
+      </div>
+      <button id="themeToggle" class="theme-toggle" title="تبديل الوضع الليلي">🌙</button>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <header class="hero" id="tool">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse-dot"></span>
+        يعمل مباشرة في متصفحك · بدون رفع للخادم
+      </div>
+      <h1 class="hero-title">
+        استخرج النص العربي من أي صورة
+        <span class="gradient-text">بدقة احترافية</span>
+      </h1>
+      <p class="hero-subtitle">
+        تقنية Tesseract OCR مفتوحة المصدر، مدمجة في واجهة عربية أنيقة.
+        اسحب صورة، اختر الوضع، واحصل على النص جاهزًا للنسخ أو التحميل.
+      </p>
+    </div>
+  </header>
+
+  <main>
+    <!-- ===== أداة الرفع ===== -->
+    <section class="tool-section">
+      <div class="card-glass upload-card">
+        <div class="drop-zone" id="dropZone">
+          <input type="file" id="fileInput" accept="image/*" hidden />
+          <div class="drop-inner">
+            <div class="drop-visual">
+              <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" stroke-linecap="round"/>
+                <polyline points="17 8 12 3 7 8" stroke-linecap="round" stroke-linejoin="round"/>
+                <line x1="12" y1="3" x2="12" y2="15" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <h3>اسحب الصورة هنا</h3>
+            <p>أو <span class="link-highlight">اختر ملفًا من جهازك</span></p>
+            <p class="hint-text">يدعم JPG · PNG · WebP · BMP</p>
+          </div>
+        </div>
+
+        <div id="previewContainer" class="hidden preview-wrap">
+          <div class="preview-header">
+            <span class="preview-label">📎 الصورة المرفوعة</span>
+            <button class="btn-remove" id="removeBtn">✕ إزالة</button>
+          </div>
+          <img id="imagePreview" alt="معاينة الصورة" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== اختيار الوضع ===== -->
+    <section class="modes-section">
+      <h2 class="section-title">اختر نوع المعالجة</h2>
+
+      <div class="mode-grid">
+        <button class="mode-card" data-mode="ocr">
+          <div class="mode-icon-wrap ocr-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+            </svg>
+          </div>
+          <h3>استخراج النص</h3>
+          <p>سحب النص العربي والجداول من الصورة بدقة عالية</p>
+          <span class="mode-tag">الأكثر استخدامًا</span>
+        </button>
+
+        <button class="mode-card" data-mode="compress">
+          <div class="mode-icon-wrap compress-icon">
+            <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/>
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96"/>
+              <line x1="12" y1="22.08" x2="12" y2="12"/>
+            </svg>
+          </div>
+          <h3>ضغط الصورة</h3>
+          <p>حدد الحجم المطلوب (450KB مثلاً) مع الحفاظ على وضوح النص</p>
+          <span class="mode-tag">مثالي للمنصات</span>
+        </button>
+      </div>
+
+      <!-- إعدادات OCR -->
+      <div id="ocrOptions" class="hidden options-panel card-glass">
+        <div class="panel-header">
+          <span class="panel-dot dot-ocr"></span>
+          <h4>إعدادات استخراج النص</h4>
+        </div>
+        <div class="options-grid">
+          <div class="input-group">
+            <label>اللغة</label>
+            <select id="languageSelect">
+              <option value="ara">العربية فقط</option>
+              <option value="ara+eng">العربية + الإنجليزية</option>
+              <option value="ara+eng+fra">عربية + إنجليزية + فرنسية</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>وضع التعرف</label>
+            <select id="ocrMode">
+              <option value="auto">تلقائي (موصى به)</option>
+              <option value="document">مستند كامل</option>
+              <option value="sparse">نص متفرق (لافتات)</option>
+            </select>
+          </div>
+        </div>
+        <div class="options-checkboxes">
+          <label class="switch-row">
+            <input type="checkbox" id="preserveLayout" checked />
+            <span class="switch"></span>
+            <span class="switch-label">الحفاظ على تنسيق الجداول</span>
+          </label>
+          <label class="switch-row">
+            <input type="checkbox" id="enhanceImage" checked />
+            <span class="switch"></span>
+            <span class="switch-label">تحسين الصورة تلقائيًا (يرفع الدقة)</span>
+          </label>
+        </div>
+      </div>
+
+      <!-- إعدادات الضغط -->
+      <div id="compressOptions" class="hidden options-panel card-glass">
+        <div class="panel-header">
+          <span class="panel-dot dot-compress"></span>
+          <h4>إعدادات ضغط الصورة</h4>
+        </div>
+        <div class="options-grid">
+          <div class="input-group">
+            <label>الحجم المستهدف (KB)</label>
+            <input type="number" id="targetSize" value="450" min="50" max="5000" />
+          </div>
+          <div class="input-group">
+            <label>منصة جاهزة</label>
+            <select id="platformSelect">
+              <option value="custom">تخصيص</option>
+              <option value="450">منصة عربية — 450KB</option>
+              <option value="200">منصة سريعة — 200KB</option>
+              <option value="1024">جودة عالية — 1MB</option>
+            </select>
+          </div>
+          <div class="input-group">
+            <label>صيغة الإخراج</label>
+            <select id="outputFormat">
+              <option value="image/jpeg">JPEG — متوافق مع الجميع</option>
+              <option value="image/webp">WebP — أصغر بـ 30%</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <button id="processBtn" class="btn-primary" disabled>
+        <span class="btn-icon">⚡</span>
+        <span class="btn-text">ابدأ المعالجة</span>
+      </button>
+    </section>
+
+    <!-- ===== النتائج ===== -->
+    <section class="results-section hidden" id="resultsSection">
+      <div class="progress-bar hidden" id="progressBar">
+        <div class="progress-info">
+          <span id="progressText">جاري المعالجة...</span>
+          <span id="progressPercent">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </div>
+
+      <!-- نتائج OCR -->
+      <div id="ocrResult" class="hidden result-card card-glass">
+        <div class="result-header">
+          <div class="result-title">
+            <span class="result-badge">✓ اكتمل</span>
+            <h3>النص المستخرج</h3>
+          </div>
+          <button id="copyBtn" class="btn-ghost">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+              <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+            </svg>
+            نسخ
+          </button>
+        </div>
+        <textarea id="extractedText" rows="14" readonly placeholder="سيظهر النص هنا..."></textarea>
+
+        <div class="download-section">
+          <h4 class="download-title">📥 تحميل الملف</h4>
+          <div class="download-grid">
+            <button id="downloadTxtBtn" class="download-tile">
+              <span class="tile-icon">📄</span>
+              <span class="tile-name">TXT</span>
+              <span class="tile-desc">نص عادي</span>
+            </button>
+            <button id="downloadDocxBtn" class="download-tile">
+              <span class="tile-icon">📘</span>
+              <span class="tile-name">Word</span>
+              <span class="tile-desc">مستند قابل للتحرير</span>
+            </button>
+            <button id="downloadPdfBtn" class="download-tile">
+              <span class="tile-icon">📕</span>
+              <span class="tile-name">PDF</span>
+              <span class="tile-desc">جاهز للطباعة</span>
+            </button>
+            <button id="downloadExcelBtn" class="download-tile">
+              <span class="tile-icon">📊</span>
+              <span class="tile-name">Excel</span>
+              <span class="tile-desc">للجداول</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- نتائج الضغط -->
+      <div id="compressResult" class="hidden result-card card-glass">
+        <div class="result-header">
+          <div class="result-title">
+            <span class="result-badge">✓ اكتمل</span>
+            <h3>الصورة المضغوطة</h3>
+          </div>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-item">
+            <div class="compare-label">
+              <span>الأصلية</span>
+              <span class="size-chip" id="originalSize">—</span>
+            </div>
+            <img id="originalPreview" alt="الصورة الأصلية" />
+          </div>
+          <div class="compare-item highlight">
+            <div class="compare-label">
+              <span>المضغوطة</span>
+              <span class="size-chip success" id="compressedSize">—</span>
+            </div>
+            <img id="compressedPreview" alt="الصورة المضغوطة" />
+          </div>
+        </div>
+
+        <div class="download-section">
+          <h4 class="download-title">📥 تحميل الصورة</h4>
+          <div class="download-grid two">
+            <button id="downloadBtn" class="download-tile primary-tile">
+              <span class="tile-icon">⬇️</span>
+              <span class="tile-name">الصورة المضغوطة</span>
+              <span class="tile-desc">الحجم الجديد</span>
+            </button>
+            <button id="downloadOriginalBtn" class="download-tile">
+              <span class="tile-icon">🖼️</span>
+              <span class="tile-name">الصورة الأصلية</span>
+              <span class="tile-desc">بدون ضغط</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== المميزات ===== -->
+    <section class="features-section" id="features">
+      <h2 class="section-title">لماذا نصّي؟</h2>
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">🔒</div>
+          <h4>خصوصية تامة</h4>
+          <p>جميع المعالجة تتم داخل متصفحك — لا يُرفع أي ملف لأي خادم.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h4>سريع وفوري</h4>
+          <p>لا انتظار، لا تسجيل، لا اشتراكات. افتح الأداة واستخدمها.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎯</div>
+          <h4>دقة عالية</h4>
+          <p>تقنية Tesseract OCR مع تحسين تلقائي للصورة قبل القراءة.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📊</div>
+          <h4>تصدير متعدد</h4>
+          <p>حمّل النتائج بصيغ TXT، Word، PDF، و Excel بضغطة واحدة.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🆓</div>
+          <h4>مجاني بالكامل</h4>
+          <p>مفتوح المصدر، بدون إعلانات، بدون حدود استخدام.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h4>يعمل على الجوال</h4>
+          <p>واجهة متجاوبة تمامًا مع جميع الشاشات والأجهزة.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== عن المشروع ===== -->
+    <section class="about-section" id="about">
+      <div class="card-glass about-card">
+        <h2>عن المشروع</h2>
+        <p>
+          <strong>نصّي</strong> أداة عربية مجانية لاستخراج النص من الصور وضغطها، مبنية على
+          مكتبات مفتوحة المصدر بالكامل: <code>Tesseract.js</code> للتعرف الضوئي على
+          الحروف، و<code>browser-image-compression</code> لضغط الصور، و<code>SheetJS</code>
+          لتصدير الجداول إلى Excel.
+        </p>
+        <p>
+          لا يحتاج الموقع إلى تثبيت، ولا إلى تسجيل، ولا إلى خادم خلفي. افتحه، ارفع صورتك،
+          واحصل على النتيجة في ثوانٍ.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>© 2026 نصّي — مفتوح المصدر ومجاني بالكامل</p>
+    <p class="footer-tech">مبني على Tesseract.js · browser-image-compression · SheetJS</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
